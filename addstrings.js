@@ -50,12 +50,16 @@ const carryRemainders = (a) => {
   
 }
 
-return carryRemainders(
-  addStringNums(
-    addLeadingZeroes(
-      strToArr(first,second)
-     )
-  )
-)
+const removeZeroes = (a) => {
+  a = a.toString().split('')
+  if(a[0] === '0'){
+    a.shift()
+    removeZeroes(a)
+  }
+  return a.join('')
+}
+
+const answer = carryRemainders(addStringNums(addLeadingZeroes(strToArr(first,second))))
+return removeZeroes(answer)
 
 }
